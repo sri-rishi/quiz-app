@@ -1,8 +1,3 @@
-.home {
-    display: flex;
-    flex-direction: column;
-}
-
 .introContainer {
     margin-top: 6rem;
     width: 100%;
