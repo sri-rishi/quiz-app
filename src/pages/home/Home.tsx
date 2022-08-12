@@ -5,7 +5,7 @@ import { IntroBox, CategoriesContainer } from "./components";
 
 export const Home = () => {
     return (
-        <div className="home">
+        <div>
             <NavigationBar />
             <IntroBox />
             <CategoriesContainer />
