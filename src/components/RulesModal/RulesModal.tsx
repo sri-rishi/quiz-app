@@ -50,6 +50,9 @@ export const RulesModal = ({setOpen, open}: ChildProps) => {
             <li>
               Each MCQ has only one correct answer.
             </li>
+            <li>
+              You can answer only once at every question
+            </li>
           </ul>
 
           <Link to="/questions" className="start-btn-div">
