@@ -1,0 +1,29 @@
+.modal-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: var(--gray-color);
+    letter-spacing: 2;
+    line-height: 2;
+    padding: 1rem;
+}
+
+.modal {
+    width: 100%;
+    max-width: fit-content;
+    background: var(--white-color);
+    border-radius: 2rem;
+    outline: transparent;
+    padding: 2rem;
+    box-shadow: 0 0 10px var(--lightest-gray);
+}
+
+.rules-list {
+    padding: 1rem;
+}
+
+.start-btn-div {
+    text-align: center;
+}
