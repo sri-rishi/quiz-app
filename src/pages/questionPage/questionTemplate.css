@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .question-container {
@@ -16,7 +17,6 @@
     padding: 2rem;
     background: var(--lighter-green);
     border-radius: 2rem;
-    box-shadow: 0 0 10px var(--lighter-green);
 }
 
 .question {
@@ -37,13 +37,13 @@
     max-width: 30rem;
     justify-content: center;
     color: var(--white-color);
-    padding: 2rem;
-    background: var(--light-green);
+    padding: 1rem;
+    background: var(--navy-blue);
     border-radius: 2rem;
 }
 
 .option:hover {
-    background: var(--darkest-green);
+    background: var(--darkest-blue);
 }
 
 .next-btn-div {
