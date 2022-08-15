@@ -1,11 +1,11 @@
 import React from "react";
-import "./questionTemplate.css"
 import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import Container  from "@mui/material/Container";
 import Button from "@mui/material/Button"
-import { NavigationBar, Options } from "../../components";
+import { NavigationBar, Options } from "../../components/index";
+import { Link } from "react-router-dom";
 
 
 const quiz = {
@@ -68,18 +68,20 @@ export const QuestionTemplate = () => {
                 }
                 </RadioGroup>
                 <div className="next-btn-div">
-                    <Button 
-                        variant="contained" 
-                        size="large"
-                        sx={{
-                            background: "#1A4D2E",
-                            "&:hover": {
-                                background: "#243D25"
-                            }
-                        }}
-                    >
-                        Next
-                    </Button>
+                    <Link to="/result">
+                        <Button 
+                            variant="contained" 
+                            size="large"
+                            sx={{
+                                background: "#1A4D2E",
+                                "&:hover": {
+                                    background: "#243D25"
+                                }
+                            }}
+                        >
+                            Next
+                        </Button>
+                    </Link>
                 </div>
             </Container>    
         </div>
