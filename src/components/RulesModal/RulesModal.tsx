@@ -1,5 +1,4 @@
 import * as React from 'react';
-import "./rulesModal.css";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -13,7 +12,6 @@ type ChildProps = {
 
 export const RulesModal = ({setOpen, open}: ChildProps) => {
   
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
@@ -50,14 +48,13 @@ export const RulesModal = ({setOpen, open}: ChildProps) => {
             <li>
               Each MCQ has only one correct answer.
             </li>
-            <li>
-              You can answer only once at every question
-            </li>
           </ul>
 
-          <Link to="/questions" className="start-btn-div">
-            <Button variant="contained">Start Quiz</Button>
-          </Link>
+          <div className="start-btn-div">
+            <Link to="/questions">
+              <Button variant="contained">Start Quiz</Button>
+            </Link>
+          </div>
         </Box>
       </Modal>
     </div>
