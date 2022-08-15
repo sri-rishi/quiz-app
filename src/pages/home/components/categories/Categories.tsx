@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { RulesModal } from "../../../../components";
+import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
 
 export const CategoriesContainer = () => {
@@ -29,7 +29,7 @@ export const CategoriesContainer = () => {
                 {
                     categoriesData.map(({id, categoryName, coverImgSrc}) =>(
                         <Box key={id} className="category-box">
-                            <img src={coverImgSrc} className="cover-img" />
+                            <img src={coverImgSrc} alt={categoryName} className="cover-img" />
                             <Typography 
                                 sx={{
                                     fontSize: "2rem", 

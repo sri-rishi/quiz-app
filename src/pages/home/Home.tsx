@@ -1,6 +1,5 @@
 import React from "react";
-import "./home.css"
-import { NavigationBar } from "../../components";
+import { NavigationBar } from "../../components/index";
 import { IntroBox, CategoriesContainer } from "./components";
 
 export const Home = () => {
