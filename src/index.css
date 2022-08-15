@@ -26,3 +26,7 @@
 .font-comfortaa {
     font-family: 'Comfortaa', cursive;
 }
+
+a {
+    text-decoration: none;
+}
