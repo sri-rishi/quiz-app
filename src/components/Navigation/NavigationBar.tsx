@@ -25,7 +25,7 @@ export const NavigationBar = () => {
               color: "#0096FF"
             }}
           >
-            QuizMe
+            Quizee
           </Typography>
               <IconButton
                 size="large"
