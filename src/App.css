@@ -1,4 +1,9 @@
+@import "./components/index/index.css";
+@import "./pages/index/index.css";
+
 .App {
+    display: flex;
+    flex-direction: column;
     background: var(--lightest-green);
     min-height: 100vh;
 }

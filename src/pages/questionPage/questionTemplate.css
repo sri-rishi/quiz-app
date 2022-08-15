@@ -1,0 +1,39 @@
+.question-page {
+    min-height: 100vh;
+    background: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.question-container {
+    margin-top: 4.1rem;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem;
+    background: var(--lighter-green);
+    border-radius: 2rem;
+}
+
+.question {
+    width: 100%;
+    text-align: center;
+    color: var(--white-color)
+}
+
+.options-box {
+    width: 100%;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.next-btn-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

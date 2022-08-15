@@ -14,14 +14,14 @@ export const IntroBox = () => {
                         fontFamily: "Comfortaa, cursive"
                     }}
                 >
-                    Welcome to QuizMe
+                    Welcome to Quizee
                 </Typography>
                 <Typography
                     sx={{
                         fontFamily: "Comfortaa, cursive"
                     }}
                 >
-                    Let's learn and see how much you know while playing QuizMe, don't forget to have fun while playing
+                    Let's learn and see how much you know while playing Quizee, don't forget to have fun while playing
                 </Typography>
             </Box>
         </Container>

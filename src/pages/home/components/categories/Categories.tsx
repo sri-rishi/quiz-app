@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-
 import Box from "@mui/material/Box";
+import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
 
 export const CategoriesContainer = () => {
+    const [openRulesModal, setOpenRulesModal] = useState<any>(false);
     return (
         <Container className="categories-container" sx={{
             display: 'flex'
@@ -18,13 +19,17 @@ export const CategoriesContainer = () => {
             >
                 Categories
             </Typography>
-            <Container className="categories" sx={{
-                display: "flex"
-            }}>
+            <Container 
+                className="categories" 
+                sx={{
+                    display: "flex"
+                }}
+                onClick={() => setOpenRulesModal(true)}
+            >
                 {
                     categoriesData.map(({id, categoryName, coverImgSrc}) =>(
                         <Box key={id} className="category-box">
-                            <img src={coverImgSrc} className="cover-img" />
+                            <img src={coverImgSrc} alt={categoryName} className="cover-img" />
                             <Typography 
                                 sx={{
                                     fontSize: "2rem", 
@@ -38,6 +43,7 @@ export const CategoriesContainer = () => {
                     ))
                 }
             </Container>
+            <RulesModal setOpen={setOpenRulesModal} open={openRulesModal}/>
         </Container>
     )
 }

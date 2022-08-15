@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
 
 export const NavigationBar = () => {
 
@@ -16,17 +17,19 @@ export const NavigationBar = () => {
         }}
       >
         <Toolbar>
-          <Typography 
-            variant="h4" 
-            component="div" 
-            sx={{ 
-              flexGrow: 1, 
-              fontFamily:"Pacifico, cursive", 
-              color: "#0096FF"
-            }}
-          >
-            QuizMe
-          </Typography>
+          
+            <Typography 
+              variant="h4" 
+              component="div" 
+              sx={{ 
+                flexGrow: 1, 
+                fontFamily:"Pacifico, cursive", 
+              }}
+            >
+              <Link to="/">
+                Quizee
+              </Link>
+            </Typography>
               <IconButton
                 size="large"
                 aria-label="account of current user"
