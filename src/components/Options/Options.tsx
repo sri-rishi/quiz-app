@@ -4,7 +4,7 @@ import Radio from "@mui/material/Radio";
 import { useLocation } from "react-router-dom";
 
 type OptionProps = {
-    id : number,
+    id: number,
     text: string,
 }
 
