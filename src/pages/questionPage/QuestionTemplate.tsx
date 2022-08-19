@@ -6,31 +6,17 @@ import Container  from "@mui/material/Container";
 import Button from "@mui/material/Button"
 import { NavigationBar, Options } from "../../components/index";
 import { Link } from "react-router-dom";
-
-
-const quiz = {
-    question: "Who wrote the book New Dimensions of India's Foreign Policy?",
-    options: [
-        {
-            id: 1,
-            text: "Atal Bihari Vajpayee"
-        },
-        {
-            id: 2,
-            text: "Abdul Kalam Azad"
-        },
-        {
-            id: 3,
-            text: "Amit Chaudhuri"
-        },
-        {
-            id: 4,
-            text: "Raghuram Rajan"
-        }
-    ]
-}
+import { useData } from "../../context/data.context";
+import { shuffleArray } from "../../utils/shuffleArray";
 
 export const QuestionTemplate = () => {
+    const {questions, index, setIndex} = useData();
+    const options = () => {
+        const mergedArr = [...questions[index].incorrect_answers, questions[index].correct_answer];
+        const optionsArr = shuffleArray(mergedArr);
+        return optionsArr;
+    };
+
     return (
         <div className="question-page">
             <NavigationBar />
@@ -47,7 +33,7 @@ export const QuestionTemplate = () => {
                             fontFamily: "Comfortaa, cursive",
                         }} 
                     >
-                        {quiz.question}
+                        {questions[index].question.replace(/&quot;/g, "'")}
                     </Typography>
                 </Box>
                 <RadioGroup
@@ -62,13 +48,13 @@ export const QuestionTemplate = () => {
                     }}
                 >
                 {
-                    quiz.options.map((item) =>  (
-                        <Options key={item.id} id={item.id} text={item.text}/>
+                    options().map((item, i) =>  (
+                        <Options key={i} text={item} id={i}/>
                     ))
                 }
                 </RadioGroup>
                 <div className="next-btn-div">
-                    <Link to="/result">
+                    {/* <Link to="/result"> */}
                         <Button 
                             variant="contained" 
                             size="large"
@@ -78,10 +64,11 @@ export const QuestionTemplate = () => {
                                     background: "#243D25"
                                 }
                             }}
+                            onClick={() => setIndex((prev: number) => prev + 1)}
                         >
                             Next
                         </Button>
-                    </Link>
+                    {/* </Link> */}
                 </div>
             </Container>    
         </div>
