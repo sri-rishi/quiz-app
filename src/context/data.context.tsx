@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
-import { DataInterface, Question} from "../types/dataContext.types";
+import { DataInterface} from "../types/dataContext.types";
 import { dataReducer , initialState} from "../reducers/dataReducer";
 
 const DataContext = createContext<DataInterface>({} as DataInterface);
 
 const DataProvider = ({children}:{children: React.ReactNode}) => {
-    const [questions, setQuestions] = useState([]);
     const [index, setIndex] = useState(0);
     
     const [state, dispatch] = useReducer(dataReducer, initialState);
@@ -17,18 +16,16 @@ const DataProvider = ({children}:{children: React.ReactNode}) => {
             try {
                 const response = await axios.get(url);
                 console.log(response);
-                setQuestions(response.data.results);
+                dispatch({type: "Set_Data", payload: response.data.results})
             }catch (error) {
                 console.log(error)
             }
         })()
     }, [state.categoryNo])
 
-    console.log(questions)
     return (
         <DataContext.Provider  
             value={{
-                questions, 
                 index, 
                 setIndex,
                 state,
