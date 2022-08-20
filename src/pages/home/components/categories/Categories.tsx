@@ -6,11 +6,16 @@ import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
 import { useData } from "../../../../context/data.context";
 
-type ActionTypeAssertion = "Books" | "Sports" | "Films" | "Mythology" | "Animals" | "Comics"
+type ActionTypeAssertion = "Books" | "Sports" | "Films" | "Mythology" | "Animals" | "Comics";
 
 export const CategoriesContainer = () => {
     const [openRulesModal, setOpenRulesModal] = useState(false);
     const {dispatch} = useData();
+
+    const categoryHandler = (categoryName: string) => {
+        setOpenRulesModal(true);
+        dispatch({type: categoryName  as ActionTypeAssertion})
+    }
     return (
         <Container className="categories-container" sx={{
             display: 'flex'
@@ -28,14 +33,13 @@ export const CategoriesContainer = () => {
                 sx={{
                     display: "flex"
                 }}
-                onClick={() => setOpenRulesModal(true)}
             >
                 {
                     categoriesData.map(({id, categoryName, coverImgSrc}) =>(
                         <Box 
                             key={id} 
                             className="category-box"
-                            onClick={() => dispatch({type: categoryName as ActionTypeAssertion})}
+                            onClick={() => categoryHandler(categoryName)}
                         >
                             <img src={coverImgSrc} alt={categoryName} className="cover-img" />
                             <Typography 
