@@ -10,7 +10,8 @@ import { useData } from "../../context/data.context";
 import { shuffleArray } from "../../utils/shuffleArray";
 
 export const QuestionTemplate = () => {
-    const {questions, index, setIndex} = useData();
+    const {state, index, setIndex} = useData();
+    const {questions} = state;
     const options = () => {
         const mergedArr = [...questions[index].incorrect_answers, questions[index].correct_answer];
         const optionsArr = shuffleArray(mergedArr);
