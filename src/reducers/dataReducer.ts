@@ -1,7 +1,8 @@
 import { DataAction, DataState } from "../types/dataReducer.types"
 
 const initialState: DataState = {
-    categoryNo: ""
+    categoryNo: "",
+    questions: []
 }
 
 const dataReducer = (state = initialState, action: DataAction) => {
@@ -40,6 +41,12 @@ const dataReducer = (state = initialState, action: DataAction) => {
             return {
                 ...state,
                 categoryNo: "29"
+            }
+
+        case "Set_Data":
+            return {
+                ...state,
+                questions: action.payload
             }
     }
 }
