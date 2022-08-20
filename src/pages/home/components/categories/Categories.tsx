@@ -4,9 +4,13 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
+import { useData } from "../../../../context/data.context";
+
+type ActionTypeAssertion = "Books" | "Sports" | "Films" | "Mythology" | "Animals" | "Comics"
 
 export const CategoriesContainer = () => {
-    const [openRulesModal, setOpenRulesModal] = useState<any>(false);
+    const [openRulesModal, setOpenRulesModal] = useState(false);
+    const {dispatch} = useData();
     return (
         <Container className="categories-container" sx={{
             display: 'flex'
@@ -28,7 +32,11 @@ export const CategoriesContainer = () => {
             >
                 {
                     categoriesData.map(({id, categoryName, coverImgSrc}) =>(
-                        <Box key={id} className="category-box">
+                        <Box 
+                            key={id} 
+                            className="category-box"
+                            onClick={() => dispatch({type: categoryName as ActionTypeAssertion})}
+                        >
                             <img src={coverImgSrc} alt={categoryName} className="cover-img" />
                             <Typography 
                                 sx={{
