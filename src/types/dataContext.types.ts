@@ -2,6 +2,7 @@ import { DataAction, DataState} from "./dataReducer.types";
 
 export type Question = {
     question: string,
+    selectedValue: string,
     correct_answer: string,
     incorrect_answers: Array<string>,
 }
