@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
+import { useData } from '../../context/data.context';
 
 export const NavigationBar = () => {
-
+  const {setIndex} = useData();
   return (
       <AppBar 
         position="fixed"
@@ -26,7 +27,10 @@ export const NavigationBar = () => {
                 fontFamily:"Pacifico, cursive", 
               }}
             >
-              <Link to="/">
+              <Link 
+                to="/"
+                onClick={() => setIndex(0)}
+              >
                 Quizee
               </Link>
             </Typography>
