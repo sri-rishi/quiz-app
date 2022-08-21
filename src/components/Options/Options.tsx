@@ -2,6 +2,8 @@ import React from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { useLocation } from "react-router-dom";
+import { useData } from "../../context/data.context";
+import { replaceHtmlSpecialChar } from "../../utils";
 
 type OptionProps = {
     id: number,
@@ -13,7 +15,8 @@ export const Options = ({id, text}: OptionProps) => {
     return (
         <FormControlLabel
             className="option"
-            value={text} 
+            value={replaceHtmlSpecialChar(text)} 
+            label={replaceHtmlSpecialChar(text)} 
             control={<Radio 
                     sx={{
                         "& .MuiSvgIcon-root": {
@@ -22,7 +25,6 @@ export const Options = ({id, text}: OptionProps) => {
                     }}
                 />
             } 
-            label={text} 
             sx={{
                 "& .MuiTypography-root" : {
                     fontSize: "1.5rem",
