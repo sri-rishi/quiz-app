@@ -7,7 +7,7 @@ import Button from "@mui/material/Button"
 import { NavigationBar, Options } from "../../components/index";
 import { Link } from "react-router-dom";
 import { useData } from "../../context/data.context";
-import { shuffleArray } from "../../utils/shuffleArray";
+import { replaceHtmlSpecialChar, shuffleArray } from "../../utils";
 
 export const QuestionTemplate = () => {
     const {state, index, setIndex} = useData();
@@ -34,7 +34,7 @@ export const QuestionTemplate = () => {
                             fontFamily: "Comfortaa, cursive",
                         }} 
                     >
-                        {questions[index].question.replace(/&quot;/g, "'")}
+                        {replaceHtmlSpecialChar(questions[index].question)}
                     </Typography>
                 </Box>
                 <RadioGroup
@@ -55,7 +55,25 @@ export const QuestionTemplate = () => {
                 }
                 </RadioGroup>
                 <div className="next-btn-div">
-                    {/* <Link to="/result"> */}
+                    {
+                        index === questions.length - 1 
+                        ?
+                        <Link to="/result">
+                            <Button 
+                                variant="contained" 
+                                size="large"
+                                sx={{
+                                    background: "#0096FF",
+                                    "&:hover": {
+                                        background: "#003865"
+                                    }
+                                }}
+                                onClick={() => setIndex(0)}
+                            >
+                                Submit
+                            </Button>
+                        </Link>
+                        : 
                         <Button 
                             variant="contained" 
                             size="large"
@@ -69,7 +87,7 @@ export const QuestionTemplate = () => {
                         >
                             Next
                         </Button>
-                    {/* </Link> */}
+                    }
                 </div>
             </Container>    
         </div>
