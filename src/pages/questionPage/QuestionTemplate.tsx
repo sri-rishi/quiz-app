@@ -6,11 +6,11 @@ import Container  from "@mui/material/Container";
 import Button from "@mui/material/Button"
 import { NavigationBar, Options } from "../../components/index";
 import { Link } from "react-router-dom";
-import { useData } from "../../context/data.context";
+import { useQuiz } from "../../context/quiz.context";
 import { replaceHtmlSpecialChar, shuffleArray } from "../../utils";
 
 export const QuestionTemplate = () => {
-    const {state, index, setIndex} = useData();
+    const {state, index, setIndex} = useQuiz();
     const {questions, questionBackImage} = state;
     const options = () => {
         const mergedArr = [...questions[index].incorrect_answers, questions[index].correct_answer];

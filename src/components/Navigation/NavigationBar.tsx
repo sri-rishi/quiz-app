@@ -5,10 +5,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
-import { useData } from '../../context/data.context';
+import { useQuiz } from '../../context/quiz.context';
 
 export const NavigationBar = () => {
-  const {setIndex} = useData();
+  const {setIndex} = useQuiz();
   return (
       <AppBar 
         position="fixed"

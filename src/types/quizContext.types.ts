@@ -1,4 +1,4 @@
-import { DataAction, DataState} from "./dataReducer.types";
+import { DataAction, DataState} from "./quizReducer.types";
 
 type Dispatch = React.Dispatch<DataAction>;
 

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import { DataProvider } from './context/data.context';
+import { DataProvider } from './context/quiz.context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

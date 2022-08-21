@@ -2,7 +2,7 @@ import React from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { useLocation } from "react-router-dom";
-import { useData } from "../../context/data.context";
+import { useQuiz } from "../../context/quiz.context";
 import { replaceHtmlSpecialChar } from "../../utils";
 
 type OptionProps = {

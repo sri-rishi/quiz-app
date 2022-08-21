@@ -1,4 +1,4 @@
-import { DataAction, DataState } from "../types/dataReducer.types"
+import { DataAction, DataState } from "../types/quizReducer.types"
 
 const initialState: DataState = {
     categoryNo: "",

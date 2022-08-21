@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
-import { DataInterface} from "../types/dataContext.types";
-import { dataReducer , initialState} from "../reducers/dataReducer";
+import { DataInterface} from "../types/quizContext.types";
+import { dataReducer , initialState} from "../reducers/quizReducer";
 
 const DataContext = createContext<DataInterface>({} as DataInterface);
 
@@ -38,6 +38,6 @@ const DataProvider = ({children}:{children: React.ReactNode}) => {
 }
 
 
-const useData = () => useContext(DataContext);
+const useQuiz = () => useContext(DataContext);
 
-export {useData, DataProvider};
+export {useQuiz, DataProvider};

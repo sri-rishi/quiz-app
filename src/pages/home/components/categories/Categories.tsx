@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
-import { useData } from "../../../../context/data.context";
+import { useQuiz } from "../../../../context/quiz.context";
 
 type ActionTypeAssertion = "Books" | "Sports" | "Films" | "Mythology" | "Animals" | "Comics";
 
 export const CategoriesContainer = () => {
     const [openRulesModal, setOpenRulesModal] = useState(false);
-    const {dispatch} = useData();
+    const {dispatch} = useQuiz();
 
     const categoryHandler = (categoryName: string) => {
         setOpenRulesModal(true);
