@@ -7,7 +7,8 @@ export type Question = {
 
 export type DataState = {
     categoryNo: string,
-    questions: Question[]
+    questions: Question[], 
+    questionBackImage: string
 }
 
 
