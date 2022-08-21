@@ -11,7 +11,7 @@ import { replaceHtmlSpecialChar, shuffleArray } from "../../utils";
 
 export const QuestionTemplate = () => {
     const {state, index, setIndex} = useData();
-    const {questions} = state;
+    const {questions, questionBackImage} = state;
     const options = () => {
         const mergedArr = [...questions[index].incorrect_answers, questions[index].correct_answer];
         const optionsArr = shuffleArray(mergedArr);
@@ -19,7 +19,10 @@ export const QuestionTemplate = () => {
     };
 
     return (
-        <div className="question-page">
+        <div 
+            className="question-page"
+            style={{backgroundImage: `url(${questionBackImage})`}}
+        >
             <NavigationBar />
             <Container 
                 className="question-container"
