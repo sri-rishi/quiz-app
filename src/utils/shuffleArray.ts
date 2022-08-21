@@ -1,6 +1,6 @@
 import React from "react";
 
-const shuffleArray = (array : Array<string>) => {
+export const shuffleArray = (array : Array<string>) => {
     let currentIndex = array.length;
     let randomIndex;
 
@@ -13,6 +13,3 @@ const shuffleArray = (array : Array<string>) => {
 
     return array;
 }
-
-
-export {shuffleArray};
