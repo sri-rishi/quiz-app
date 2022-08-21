@@ -1,6 +1,7 @@
 .question-page {
     min-height: 100vh;
-    background: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
