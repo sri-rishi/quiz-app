@@ -17,7 +17,7 @@ export type QuizAction =
     {
         type: "Select_Values",
         payload: {
-            selectedValues: string,
+            selectedValue: string,
             currIndex: number
         }
     }
