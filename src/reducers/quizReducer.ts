@@ -56,7 +56,6 @@ const dataReducer = (state = initialState, action: QuizAction): QuizState => {
                 ...state,
                 questions: action.payload.map(ques => ({
                     ...ques,
-                    correct_answer: ques.correct_answer,
                     options: shuffleArray([...ques.incorrect_answers, ques.correct_answer])
                 }))
             }
@@ -64,13 +63,18 @@ const dataReducer = (state = initialState, action: QuizAction): QuizState => {
         case "Select_Values":
             return {
                 ...state,
-                questions: [
-                    ...state.questions, 
+                questions: state.questions.map(ques => 
+                    state.questions.indexOf(ques) === action.payload.currIndex
+                    ?
                     {
-                        ...state.questions[action.payload.currIndex],
-                        selectedValue: action.payload.selectedValues,
+                        ...ques,
+                        selectedValue: action.payload.selectedValue,
                     }
-                ]
+                    : 
+                    {
+                        ...ques
+                    }
+                )
             }
 
         
