@@ -7,9 +7,8 @@ const DataContext = createContext<DataInterface>({} as DataInterface);
 
 const DataProvider = ({children}:{children: React.ReactNode}) => {
     const [index, setIndex] = useState(0);
-    
     const [state, dispatch] = useReducer(dataReducer, initialState);
-    const url = `https://opentdb.com/api.php?amount=5&category=${state.categoryNo}&type=multiple`
+    const url: string = `https://opentdb.com/api.php?amount=5&category=${state.categoryNo}&type=multiple`
 
     useEffect(() => {
         (async ()=> {
@@ -18,10 +17,10 @@ const DataProvider = ({children}:{children: React.ReactNode}) => {
                 console.log(response);
                 dispatch({type: "Set_Data", payload: response.data.results})
             }catch (error) {
-                console.log(error)
+                console.error(error);
             }
         })()
-    }, [state.categoryNo])
+    }, [state.categoryNo]);
 
     return (
         <DataContext.Provider  
@@ -34,9 +33,8 @@ const DataProvider = ({children}:{children: React.ReactNode}) => {
         >
             {children}
         </DataContext.Provider>
-    )
-}
-
+    );
+};
 
 const useQuiz = () => useContext(DataContext);
 

@@ -6,17 +6,27 @@ import { useQuiz } from "../../context/quiz.context";
 import { replaceHtmlSpecialChar } from "../../utils";
 
 type OptionProps = {
-    id: number,
     text: string,
 }
 
-export const Options = ({id, text}: OptionProps) => {
+export const Options = ({text}: OptionProps) => {
     const location = useLocation();
+    const {state,dispatch, index} = useQuiz();
     return (
         <FormControlLabel
             className="option"
-            value={replaceHtmlSpecialChar(text)} 
-            label={replaceHtmlSpecialChar(text)} 
+            value={text} 
+            label={text} 
+            onClick={() =>{ 
+                
+                dispatch({
+                type: "Select_Values", 
+                payload: {
+                    selectedValues: text,
+                    currIndex: index
+                }
+            });
+        }}
             control={<Radio 
                     sx={{
                         "& .MuiSvgIcon-root": {

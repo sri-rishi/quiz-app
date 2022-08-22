@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
@@ -7,16 +7,15 @@ import Button from "@mui/material/Button"
 import { NavigationBar, Options } from "../../components/index";
 import { Link } from "react-router-dom";
 import { useQuiz } from "../../context/quiz.context";
-import { replaceHtmlSpecialChar, shuffleArray } from "../../utils";
+import { replaceHtmlSpecialChar } from "../../utils";
 
 export const QuestionTemplate = () => {
     const {state, index, setIndex} = useQuiz();
     const {questions, questionBackImage} = state;
-    const options = () => {
-        const mergedArr = [...questions[index].incorrect_answers, questions[index].correct_answer];
-        const optionsArr = shuffleArray(mergedArr);
-        return optionsArr;
-    };
+    
+    useEffect(() => {
+        console.log(questions)
+    }, [])
 
     return (
         <div 
@@ -52,8 +51,8 @@ export const QuestionTemplate = () => {
                     }}
                 >
                 {
-                    options().map((item, i) =>  (
-                        <Options key={i} text={item} id={i}/>
+                    questions[index].options.map((item,i) =>  (
+                        <Options key={i} text={item}/>
                     ))
                 }
                 </RadioGroup>

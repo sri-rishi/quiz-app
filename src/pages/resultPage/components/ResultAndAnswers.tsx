@@ -58,8 +58,8 @@ export const ResultAndAnswers = () => {
                 }}
             >
             {
-                quiz.options.map((item) =>  (
-                    <Options key={item.id} id={item.id} text={item.text}/>
+                quiz.options.map((item, i) =>  (
+                    <Options key={i} text={item.text}/>
                 ))
             }
             </RadioGroup>

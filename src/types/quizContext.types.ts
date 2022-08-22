@@ -1,9 +1,9 @@
-import { DataAction, DataState} from "./quizReducer.types";
+import { QuizAction, QuizState} from "./quizReducer.types";
 
-type Dispatch = React.Dispatch<DataAction>;
+type Dispatch = React.Dispatch<QuizAction>;
 
 export interface DataInterface {
-    state: DataState, 
+    state: QuizState, 
     dispatch: Dispatch,
     index: number,
     setIndex: React.Dispatch<React.SetStateAction<number>>,
