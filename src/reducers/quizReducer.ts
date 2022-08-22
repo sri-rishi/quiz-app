@@ -1,12 +1,13 @@
-import { DataAction, DataState } from "../types/quizReducer.types"
+import { QuizAction, QuizState } from "../types/quizReducer.types";
+import { shuffleArray } from '../utils';
 
-const initialState: DataState = {
+const initialState: QuizState = {
     categoryNo: "",
     questions: [], 
     questionBackImage: "",
 }
 
-const dataReducer = (state = initialState, action: DataAction) => {
+const dataReducer = (state = initialState, action: QuizAction): QuizState => {
     switch(action.type) {
         case "Books": 
             return {
@@ -53,8 +54,26 @@ const dataReducer = (state = initialState, action: DataAction) => {
         case "Set_Data":
             return {
                 ...state,
-                questions: action.payload
+                questions: action.payload.map(ques => ({
+                    ...ques,
+                    correct_answer: ques.correct_answer,
+                    options: shuffleArray([...ques.incorrect_answers, ques.correct_answer])
+                }))
             }
+            
+        case "Select_Values":
+            return {
+                ...state,
+                questions: [
+                    ...state.questions, 
+                    {
+                        ...state.questions[action.payload.currIndex],
+                        selectedValue: action.payload.selectedValues,
+                    }
+                ]
+            }
+
+        
     }
 }
 
