@@ -18,11 +18,10 @@ export const Options = ({text}: OptionProps) => {
             value={text} 
             label={text} 
             onClick={() =>{ 
-                
                 dispatch({
                 type: "Select_Values", 
                 payload: {
-                    selectedValues: text,
+                    selectedValue: text,
                     currIndex: index
                 }
             });
