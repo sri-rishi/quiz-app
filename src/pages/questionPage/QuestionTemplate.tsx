@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
@@ -12,10 +11,6 @@ import { replaceHtmlSpecialChar } from "../../utils";
 export const QuestionTemplate = () => {
     const {state, index, setIndex} = useQuiz();
     const {questions, questionBackImage} = state;
-    
-    useEffect(() => {
-        console.log(questions)
-    }, [])
 
     return (
         <div 
@@ -51,8 +46,8 @@ export const QuestionTemplate = () => {
                     }}
                 >
                 {
-                    questions[index].options.map((item,i) =>  (
-                        <Options key={i} text={item}/>
+                    questions[index].options.map(({id, text, isRight}) =>  (
+                        <Options key={id} text={text} isRight={isRight} questionIndex={index}/>
                     ))
                 }
                 </RadioGroup>

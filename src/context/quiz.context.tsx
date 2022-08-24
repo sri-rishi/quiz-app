@@ -8,13 +8,12 @@ const DataContext = createContext<DataInterface>({} as DataInterface);
 const DataProvider = ({children}:{children: React.ReactNode}) => {
     const [index, setIndex] = useState(0);
     const [state, dispatch] = useReducer(dataReducer, initialState);
-    const url: string = `https://opentdb.com/api.php?amount=5&category=${state.categoryNo}&type=multiple`
+    const url = `https://opentdb.com/api.php?amount=5&category=${state.categoryNo}&type=multiple`
 
     useEffect(() => {
         (async ()=> {
             try {
                 const response = await axios.get(url);
-                console.log(response);
                 dispatch({type: "Set_Data", payload: response.data.results})
             }catch (error) {
                 console.error(error);
