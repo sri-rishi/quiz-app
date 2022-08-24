@@ -1,6 +1,14 @@
+
+export type OptionsType = {
+    id: string,
+    text: string,
+    isRight: boolean
+}
+
 export type Question = {
+    id: string,
     question: string,
-    options: Array<string>
+    options: OptionsType[]
     selectedValue: string,
     correct_answer: string,
     incorrect_answers: Array<string>,
