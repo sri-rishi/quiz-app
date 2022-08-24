@@ -1,10 +1,12 @@
-import React from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { NavigationBar } from "../../components/index";
 import { ResultAndAnswers } from "./components/ResultAndAnswers";
+import { useQuiz } from "../../context/quiz.context";
 
 export const ResultPage = () => {
+    const {state} = useQuiz();
+
     return (
         <div>
             <NavigationBar />
@@ -42,8 +44,17 @@ export const ResultPage = () => {
                     10/50
                 </Typography>
             </Container>
-            <Container>
-                <ResultAndAnswers />
+            <Container className="resultAns">
+                {
+                    state.questions.map((item, index) => (
+                        <ResultAndAnswers
+                            key={item.id} 
+                            questionIndex={index}
+                            questionValue={item.question} 
+                            options={item.options}
+                        />
+                    ))
+                }
             </Container>
         </div>
     )
