@@ -1,5 +1,6 @@
 import { QuizAction, QuizState } from "../types/quizReducer.types";
 import { shuffleArray } from '../utils';
+import { v4 as uuid } from "uuid";
 
 const initialState: QuizState = {
     categoryNo: "",
@@ -7,7 +8,8 @@ const initialState: QuizState = {
     questionBackImage: "",
 }
 
-const dataReducer = (state = initialState, action: QuizAction): QuizState => {
+const dataReducer = (state = initialState, action: QuizAction) => {
+    
     switch(action.type) {
         case "Books": 
             return {
@@ -54,10 +56,20 @@ const dataReducer = (state = initialState, action: QuizAction): QuizState => {
         case "Set_Data":
             return {
                 ...state,
-                questions: action.payload.map(ques => ({
-                    ...ques,
-                    options: shuffleArray([...ques.incorrect_answers, ques.correct_answer])
-                }))
+                questions: action.payload.map(ques => {
+                    const optionsArr = shuffleArray([...ques.incorrect_answers, ques.correct_answer])
+                   return (
+                    {
+                        ...ques,
+                        id: uuid(),
+                        options: optionsArr.map(el => ({
+                            id: uuid(),
+                            text: el,
+                            isRight: ques.correct_answer === el
+                        }))
+                    }
+                   )
+                })
             }
             
         case "Select_Values":
