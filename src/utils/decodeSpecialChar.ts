@@ -13,4 +13,5 @@ export const replaceHtmlSpecialChar = (string: string) => {
             .replace(/(&euro;|&#8364;)/g, "€")
             .replace(/(&copy;|&#169;)/g, "©")
             .replace(/(&reg;|&#174;)/g, "®")
+            .replace(/(&euml;|&#235;)/g, "ë")
 }
