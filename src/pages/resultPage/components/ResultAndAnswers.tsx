@@ -1,37 +1,22 @@
-import React from "react";
 import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import Container  from "@mui/material/Container";
 import { Options } from "../../../components/index/index";
+import { replaceHtmlSpecialChar } from "../../../utils";
+import { OptionsType } from "../../../types/quizReducer.types";
 
 
-const quiz = {
-    question: "Who wrote the book New Dimensions of India's Foreign Policy?",
-    options: [
-        {
-            id: 1,
-            text: "Atal Bihari Vajpayee"
-        },
-        {
-            id: 2,
-            text: "Abdul Kalam Azad"
-        },
-        {
-            id: 3,
-            text: "Amit Chaudhuri"
-        },
-        {
-            id: 4,
-            text: "Raghuram Rajan"
-        }
-    ]
+type ResultAnswersProps = {
+    questionValue: string,
+    options: OptionsType[];
+    questionIndex: number
 }
 
-export const ResultAndAnswers = () => {
+export const ResultAndAnswers = ({questionValue, options, questionIndex}: ResultAnswersProps) => {
     return (
         <Container 
-            className="question-container"
+            className="question-container result-ques-back"
             sx={{
                 display: "flex"
             }}
@@ -43,7 +28,7 @@ export const ResultAndAnswers = () => {
                         fontFamily: "Comfortaa, cursive",
                     }} 
                 >
-                    {quiz.question}
+                    {replaceHtmlSpecialChar(questionValue)}
                 </Typography>
             </Box>
             <RadioGroup
@@ -58,8 +43,8 @@ export const ResultAndAnswers = () => {
                 }}
             >
             {
-                quiz.options.map((item, i) =>  (
-                    <Options key={i} text={item.text}/>
+                options.map(({id, text, isRight}) =>  (
+                    <Options key={id} text={text} isRight={isRight} questionIndex={questionIndex}/>
                 ))
             }
             </RadioGroup>
