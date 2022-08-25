@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
     padding: 2rem;
     background: var(--lighter-green);
     border-radius: 2rem;
@@ -28,7 +28,7 @@
 
 .options-box {
     width: 100%;
-    gap: 4rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -37,4 +37,11 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.question-service {
+    width:  100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
