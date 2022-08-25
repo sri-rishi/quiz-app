@@ -3,9 +3,26 @@ import Container from "@mui/material/Container";
 import { NavigationBar } from "../../components/index";
 import { ResultAndAnswers } from "./components/ResultAndAnswers";
 import { useQuiz } from "../../context/quiz.context";
+import { useEffect, useRef } from "react";
 
 export const ResultPage = () => {
     const {state} = useQuiz();
+    const {questions} = state;
+    const totalScore = useRef(0)
+
+    if(questions.length !== 0) {
+        let total = 0;
+        questions.forEach((ques, index) => {
+            for (const opt of questions[index].options) {
+                if(questions[index].selectedValue === opt.text && opt.isRight) {
+                    total += 10;
+                }
+            }
+        })
+
+        totalScore.current = total;
+    }
+
 
     return (
         <div>
@@ -25,7 +42,13 @@ export const ResultPage = () => {
                         fontSize: "1.7rem"
                     }}
                 >
-                    😔 Oops! Better luck next time
+                    {
+                        (totalScore.current / 50) * 100 > 75   
+                        ?
+                        "🏆 Yey! you have cleareed the quiz"
+                        :
+                        "😔 Oops! better luck next time"
+                    }
                 </Typography>
                 <Typography 
                     variant="body1"
@@ -41,12 +64,12 @@ export const ResultPage = () => {
                         fontSize: "1.4rem"
                     }}
                 >
-                    10/50
+                    {totalScore.current}/50
                 </Typography>
             </Container>
             <Container className="resultAns">
                 {
-                    state.questions.map((item, index) => (
+                    questions.map((item, index) => (
                         <ResultAndAnswers
                             key={item.id} 
                             questionIndex={index}
