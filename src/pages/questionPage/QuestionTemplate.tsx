@@ -2,15 +2,22 @@ import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import Container  from "@mui/material/Container";
-import Button from "@mui/material/Button"
-import { NavigationBar, Options } from "../../components/index";
-import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import { NavigationBar, Options, Timer } from "../../components/index";
+import { Link} from "react-router-dom";
 import { useQuiz } from "../../context/quiz.context";
 import { replaceHtmlSpecialChar } from "../../utils";
+import { useState } from "react";
 
 export const QuestionTemplate = () => {
     const {state, index, setIndex} = useQuiz();
     const {questions, questionBackImage} = state;
+    const [timer , setTimer] = useState(30);
+    
+    const nextBtnHandler = () => {
+        setTimer(30)
+        setIndex((prev: number) => prev + 1)
+    }
 
     return (
         <div 
@@ -23,7 +30,18 @@ export const QuestionTemplate = () => {
                 sx={{
                     display: "flex"
                 }}
-            >
+            >   
+                <Box className="question-service">
+                    <Typography 
+                        sx={{
+                            fontSize: "1.2rem",
+                            fontFamily: "Comfortaa, cursive",
+                        }} 
+                    >
+                        Question: {`${index + 1} / ${questions.length}`}
+                    </Typography>
+                    <Timer timer={timer} setTimer={setTimer} nextBtnHandler={nextBtnHandler}/>
+                </Box>
                 <Box className="question">
                     <Typography
                         sx={{
@@ -80,7 +98,7 @@ export const QuestionTemplate = () => {
                                     background: "#243D25"
                                 }
                             }}
-                            onClick={() => setIndex((prev: number) => prev + 1)}
+                            onClick={() => nextBtnHandler()}
                         >
                             Next
                         </Button>
