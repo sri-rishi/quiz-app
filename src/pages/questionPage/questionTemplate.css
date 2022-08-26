@@ -1,6 +1,7 @@
 .question-page {
     min-height: 100vh;
-    background: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
     padding: 2rem;
     background: var(--lighter-green);
     border-radius: 2rem;
@@ -27,7 +28,7 @@
 
 .options-box {
     width: 100%;
-    gap: 4rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -36,4 +37,11 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.question-service {
+    width:  100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

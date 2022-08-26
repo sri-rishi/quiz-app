@@ -1,12 +1,21 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { RulesModal } from "../../../../components/index";
 import { categoriesData } from "./categoriesData";
+import { useQuiz } from "../../../../context/quiz.context";
+
+type ActionTypeAssertion = "Books" | "Sports" | "Films" | "Mythology" | "Animals" | "Comics";
 
 export const CategoriesContainer = () => {
-    const [openRulesModal, setOpenRulesModal] = useState<any>(false);
+    const [openRulesModal, setOpenRulesModal] = useState(false);
+    const {dispatch} = useQuiz();
+
+    const categoryHandler = (categoryName: string) => {
+        setOpenRulesModal(true);
+        dispatch({type: categoryName  as ActionTypeAssertion})
+    }
     return (
         <Container className="categories-container" sx={{
             display: 'flex'
@@ -24,11 +33,14 @@ export const CategoriesContainer = () => {
                 sx={{
                     display: "flex"
                 }}
-                onClick={() => setOpenRulesModal(true)}
             >
                 {
                     categoriesData.map(({id, categoryName, coverImgSrc}) =>(
-                        <Box key={id} className="category-box">
+                        <Box 
+                            key={id} 
+                            className="category-box"
+                            onClick={() => categoryHandler(categoryName)}
+                        >
                             <img src={coverImgSrc} alt={categoryName} className="cover-img" />
                             <Typography 
                                 sx={{

@@ -1,13 +1,13 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
+import { useQuiz } from '../../context/quiz.context';
 
 export const NavigationBar = () => {
-
+  const {setIndex} = useQuiz();
   return (
       <AppBar 
         position="fixed"
@@ -26,7 +26,10 @@ export const NavigationBar = () => {
                 fontFamily:"Pacifico, cursive", 
               }}
             >
-              <Link to="/">
+              <Link 
+                to="/"
+                onClick={() => setIndex(0)}
+              >
                 Quizee
               </Link>
             </Typography>

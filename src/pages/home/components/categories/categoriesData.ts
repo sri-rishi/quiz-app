@@ -32,7 +32,7 @@ export const categoriesData: Categories[] = [
     },
     {
         id: 6,
-        categoryName: "Catoons",
-        coverImgSrc: "https://w0.peakpx.com/wallpaper/504/274/HD-wallpaper-movie-tom-jerry-tom-tom-and-jerry-jerry-tom-and-jerry.jpg"
+        categoryName: "Comics",
+        coverImgSrc: "https://i.etsystatic.com/17116666/r/il/852b41/3646403689/il_fullxfull.3646403689_d8u7.jpg"
     }
 ]

@@ -1,0 +1,14 @@
+
+.timer {
+    background: var(--darkest-blue);
+    color: var(--white-color);
+    padding: 3px 10px;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 7rem;
+}
+
+.redBg {
+    background: var(--shaded-red);
+}

@@ -1,9 +1,24 @@
 .option {
     width: 100%;
-    max-width: 30rem;
+    height: 5rem;
+    max-height: 8rem;
+    max-width: 25rem;
     justify-content: center;
+    text-align: center;
     color: var(--white-color);
     padding: 1rem;
     background: var(--navy-blue);
     border-radius: 2rem;
+}
+
+.selectedValue {
+    background: var(--shaded-yellow);
+}
+
+.rightAns  {
+    background: var(--green);
+}
+
+.wrongAns {
+    background: var(--shaded-red);
 }

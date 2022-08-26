@@ -1,45 +1,47 @@
-import React from "react";
 import Typography from "@mui/material/Typography";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import Container  from "@mui/material/Container";
-import Button from "@mui/material/Button"
-import { NavigationBar, Options } from "../../components/index";
-import { Link } from "react-router-dom";
-
-
-const quiz = {
-    question: "Who wrote the book New Dimensions of India's Foreign Policy?",
-    options: [
-        {
-            id: 1,
-            text: "Atal Bihari Vajpayee"
-        },
-        {
-            id: 2,
-            text: "Abdul Kalam Azad"
-        },
-        {
-            id: 3,
-            text: "Amit Chaudhuri"
-        },
-        {
-            id: 4,
-            text: "Raghuram Rajan"
-        }
-    ]
-}
+import Button from "@mui/material/Button";
+import { NavigationBar, Options, Timer } from "../../components/index";
+import { Link} from "react-router-dom";
+import { useQuiz } from "../../context/quiz.context";
+import { replaceHtmlSpecialChar } from "../../utils";
+import { useState } from "react";
 
 export const QuestionTemplate = () => {
+    const {state, index, setIndex} = useQuiz();
+    const {questions, questionBackImage} = state;
+    const [timer , setTimer] = useState(30);
+    
+    const nextBtnHandler = () => {
+        setTimer(30)
+        setIndex((prev: number) => prev + 1)
+    }
+
     return (
-        <div className="question-page">
+        <div 
+            className="question-page"
+            style={{backgroundImage: `url(${questionBackImage})`}}
+        >
             <NavigationBar />
             <Container 
                 className="question-container"
                 sx={{
                     display: "flex"
                 }}
-            >
+            >   
+                <Box className="question-service">
+                    <Typography 
+                        sx={{
+                            fontSize: "1.2rem",
+                            fontFamily: "Comfortaa, cursive",
+                        }} 
+                    >
+                        Question: {`${index + 1} / ${questions.length}`}
+                    </Typography>
+                    <Timer timer={timer} setTimer={setTimer} nextBtnHandler={nextBtnHandler}/>
+                </Box>
                 <Box className="question">
                     <Typography
                         sx={{
@@ -47,7 +49,7 @@ export const QuestionTemplate = () => {
                             fontFamily: "Comfortaa, cursive",
                         }} 
                     >
-                        {quiz.question}
+                        {replaceHtmlSpecialChar(questions[index].question)}
                     </Typography>
                 </Box>
                 <RadioGroup
@@ -62,13 +64,31 @@ export const QuestionTemplate = () => {
                     }}
                 >
                 {
-                    quiz.options.map((item) =>  (
-                        <Options key={item.id} id={item.id} text={item.text}/>
+                    questions[index].options.map(({id, text, isRight}) =>  (
+                        <Options key={id} text={text} isRight={isRight} questionIndex={index}/>
                     ))
                 }
                 </RadioGroup>
                 <div className="next-btn-div">
-                    <Link to="/result">
+                    {
+                        index === questions.length - 1 
+                        ?
+                        <Link to="/result">
+                            <Button 
+                                variant="contained" 
+                                size="large"
+                                sx={{
+                                    background: "#0096FF",
+                                    "&:hover": {
+                                        background: "#003865"
+                                    }
+                                }}
+                                onClick={() => setIndex(0)}
+                            >
+                                Submit
+                            </Button>
+                        </Link>
+                        : 
                         <Button 
                             variant="contained" 
                             size="large"
@@ -78,10 +98,11 @@ export const QuestionTemplate = () => {
                                     background: "#243D25"
                                 }
                             }}
+                            onClick={() => nextBtnHandler()}
                         >
                             Next
                         </Button>
-                    </Link>
+                    }
                 </div>
             </Container>    
         </div>
