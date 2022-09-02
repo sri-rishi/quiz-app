@@ -2,8 +2,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -13,9 +11,16 @@ import Container from '@mui/material/Container';
 import { signInWithGoogle } from '../../services/authService';
 import { useState } from 'react';
 import { useAuth } from '../../context/auth.context';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../api-calls/firebaseAuthApis';
+
 
 export const SignIn = () =>{
-  const {loginUser} = useAuth();
+  const {
+    state,
+    dispatch
+  } = useAuth();
+  const navigate = useNavigate();
   const [loginDetails, setLoginDetails] = useState({
     email : "",
     password: ""
@@ -26,7 +31,7 @@ export const SignIn = () =>{
       loginDetails.email !== "" &&
       loginDetails.password !== ""
     )  {
-      loginUser(loginDetails.email, loginDetails.password)
+      loginUser(loginDetails.email, loginDetails.password, dispatch, navigate);
     }
   }
 
@@ -72,10 +77,6 @@ export const SignIn = () =>{
               value={loginDetails.password}
               onChange={(e) => setLoginDetails(details => ({...details, password: e.target.value}))}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -95,13 +96,8 @@ export const SignIn = () =>{
               Sign In with Google
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/singup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
