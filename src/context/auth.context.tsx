@@ -1,4 +1,5 @@
-import React, {createContext, useContext, useEffect, useState} from "react";
+import React, {createContext, useContext, useEffect, useReducer, useState} from "react";
+import { authReducer, initialAuthState} from "../reducers/authReducer";
 import { AuthContextType } from "../types/authContext.types";
 import {
     query,
@@ -7,25 +8,23 @@ import {
     where, 
     getDocs
 } from "../firebase";
-import { logInWithEmailAndPassword, registerWithEmailAndPassword } from "../services/authService";
+
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const AuthProvider = ({children}: {children: React.ReactNode}) => {
-    const tokenFromLocalStorage = localStorage.getItem("token");
-    const [token, setToken] = useState(tokenFromLocalStorage);
-    const userFromLocalStorage = localStorage.getItem("user")
-    const [userFromLocal, setUserFromLocal] = useState(userFromLocalStorage);
     const [userDetails, setUserDetails] = useState({
         name: "",
         email: ""
     });
 
+    const [state, dispatch] = useReducer(authReducer, initialAuthState);
+
     useEffect(() => {
-        if(token && userFromLocal) {
+        if(state.tokenFromLocal && state.userFromLocal) {
             (async () => {
                 try {
-                    const q = query(collection(db, "users"), where("uid","==", userFromLocal));
+                    const q = query(collection(db, "users"), where("uid","==", state.userFromLocal));
                     const querySnapShot = await getDocs(q);
                     querySnapShot.forEach(doc => {
                         const userDetailObj: any = doc.data();
@@ -36,42 +35,20 @@ const AuthProvider = ({children}: {children: React.ReactNode}) => {
                 }
             })()
         }
-    }, [userFromLocal, token]);
-
-    const loginUser = async(email: string, password: string) => {
-        try {
-            const response = await logInWithEmailAndPassword(email, password);
-            const user: any = response?.user;
-            if(user) {
-                localStorage.setItem("token", user.accessToken);
-                localStorage.setItem("user", user.uid);
-                setUserFromLocal(user.uid);
-                setToken(user.accessToken);
-            }
-        }catch (error) {
-            console.log(error)
-        }
-    }
-    const signupUser = async(name: string, email : string, password: string) => {
-        try {
-            const response = await registerWithEmailAndPassword(name, email, password);
-            const user: any = response?.user;
-            if(user) {
-                localStorage.setItem("token", user.accessToken);
-                localStorage.setItem("user", user.uid);
-                setToken(user.accessToken);
-                setUserFromLocal(user.uid);
-            }
-        }catch (error) {
-            console.error(error)
-        }
-    } 
+    }, [state.userFromLocal, state.tokenFromLocal]);
     return (
-        <AuthContext.Provider value={{loginUser, signupUser}}>
+        <AuthContext.Provider value={{
+            state, 
+            dispatch, 
+            userDetails, 
+            setUserDetails, 
+        }}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+
 
 const useAuth = () => useContext(AuthContext);
 
