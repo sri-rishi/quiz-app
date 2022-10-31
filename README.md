@@ -1,13 +1,13 @@
 
 # Quiz Me
-###  A Fun Quiz Web Application
+###  A Quiz Web Application
 
 
 ## **How to install and run locally ?**
 
 ```
-$ git clone 
-$ cd quiz-me
+$ git clone https://github.com/sri-rishi/quiz-app.git
+$ cd quiz-app
 $ npm install
 $ npm install firebase
 $ npm start
@@ -32,7 +32,8 @@ $ npm start
 ## **Built with -**
 
 - React with Typescript 
-- Firebase for storing data
-- Vanilla CSS integrated with BoostMat UI Component Library
+- Firebase for Authentication
+- Material UI 
+- Vanilla CSS
 - React Context API + useReducer
 - React Router v6
