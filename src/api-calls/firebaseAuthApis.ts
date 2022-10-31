@@ -1,5 +1,6 @@
 import { Dispatch } from './../types/authContext.types';
 import { logInWithEmailAndPassword, registerWithEmailAndPassword } from "../services/authService";
+import {toast} from "react-toastify";
 
 export type Navigate = (value: string) => void
 
@@ -16,10 +17,11 @@ const loginUser = async(email: string, password: string, dispatch: Dispatch, nav
                     user: user.uid, 
                     token: user.accessToken
                 }})
+            toast.success("Successfully logged in")    
             navigate("/")
         }
     }catch (error) {
-        console.log(error)
+        toast.error(`${error}`)
     }
 }
 const signupUser = async(name: string, email : string, password: string, dispatch: Dispatch, navigate: Navigate) => {
@@ -35,10 +37,11 @@ const signupUser = async(name: string, email : string, password: string, dispatc
                     user: user.uid, 
                     token: user.accessToken
                 }})
+            toast.success("Successfully singed up")
             navigate("/signin");
         }
     }catch (error) {
-        console.error(error)
+        toast.error(`${error}`)
     }
 };
 
