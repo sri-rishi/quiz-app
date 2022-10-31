@@ -12,6 +12,7 @@ import { useAuth } from '../../context/auth.context';
 import {useState} from "react";
 import { signupUser } from '../../api-calls/firebaseAuthApis';
 import { useNavigate, Link } from 'react-router-dom';
+import { NavigationBar } from '../../components/index';
 
 export const SignUp = () => {
   const {dispatch} = useAuth();
@@ -29,11 +30,13 @@ export const SignUp = () => {
   }
 
   return (
+    <>
+    <NavigationBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -117,5 +120,6 @@ export const SignUp = () => {
           </Box>
         </Box>
       </Container>
+    </>
   );
 }
