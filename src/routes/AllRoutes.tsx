@@ -1,7 +1,8 @@
 import React from "react";
-import { Home, QuestionTemplate, ResultPage } from "../pages/index/index";
+import { Home, QuestionTemplate, ResultPage, SignIn, SignUp, UserProfile } from "../pages/index/index";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const AllRoutes = () => {
     const location = useLocation()
@@ -13,6 +14,11 @@ export const AllRoutes = () => {
             <Route path="/" element={<Home />}/>
             <Route path="/questions" element={<QuestionTemplate />} />
             <Route path="/result" element={<ResultPage />} />
+            <Route path="/user" element={<PrivateRoute />}>
+                <Route path="/user/user-profile" element={<UserProfile />} />
+            </Route>
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/singup" element={<SignUp />} />
         </Routes>
     )
 }

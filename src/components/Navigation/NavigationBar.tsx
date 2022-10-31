@@ -33,17 +33,19 @@ export const NavigationBar = () => {
                 Quizee
               </Link>
             </Typography>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                sx={{
-                    color: "#06283D",
-                }}
-              >
-                <AccountCircle sx={{fontSize:"2rem"}}/>
-              </IconButton>
+              <Link to="/user/user-profile">
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  sx={{
+                      color: "#06283D",
+                  }}
+                >
+                  <AccountCircle sx={{fontSize:"2rem"}}/>
+                </IconButton>
+              </Link>
         </Toolbar>
       </AppBar>
   );

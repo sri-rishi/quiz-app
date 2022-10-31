@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+body {
+    background: var(--lightest-green);
+}
+
 
 :root {
     --white-color: #fff;
