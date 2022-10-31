@@ -4,11 +4,13 @@ type UserDetailsObj = {
     email: string
 }
 
+export type SetUserDetails = React.Dispatch<React.SetStateAction<UserDetailsObj>>
+
 export type Dispatch = React.Dispatch<AuthAction>
 
 export type AuthContextType = {
     state: InitialAuthState,
     dispatch: Dispatch,
     userDetails: UserDetailsObj,
-    setUserDetails: React.Dispatch<React.SetStateAction<UserDetailsObj>>
+    setUserDetails: SetUserDetails
 }

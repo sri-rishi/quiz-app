@@ -1,7 +1,7 @@
 import { Dispatch } from './../types/authContext.types';
 import { logInWithEmailAndPassword, registerWithEmailAndPassword } from "../services/authService";
 
-type Navigate = (value: string) => void
+export type Navigate = (value: string) => void
 
 const loginUser = async(email: string, password: string, dispatch: Dispatch, navigate: Navigate) => {
     try {
@@ -35,7 +35,7 @@ const signupUser = async(name: string, email : string, password: string, dispatc
                     user: user.uid, 
                     token: user.accessToken
                 }})
-            navigate("/login");
+            navigate("/signin");
         }
     }catch (error) {
         console.error(error)
