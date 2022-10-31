@@ -15,7 +15,6 @@ import { loginUser } from '../../api-calls/firebaseAuthApis';
 
 export const SignIn = () =>{
   const {
-    state,
     dispatch
   } = useAuth();
   const navigate = useNavigate();

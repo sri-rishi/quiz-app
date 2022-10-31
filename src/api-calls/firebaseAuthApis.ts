@@ -20,8 +20,12 @@ const loginUser = async(email: string, password: string, dispatch: Dispatch, nav
             toast.success("Successfully logged in")    
             navigate("/")
         }
-    }catch (error) {
-        toast.error(`${error}`)
+    }catch (error: any) {
+        const errorMsg = error.message
+          .match(/\/(\S+)[)]./i)[1]
+          .replace(/-/g, " ")
+          .toUpperCase();
+        toast.error(`${errorMsg}`)
     }
 }
 const signupUser = async(name: string, email : string, password: string, dispatch: Dispatch, navigate: Navigate) => {
@@ -37,11 +41,15 @@ const signupUser = async(name: string, email : string, password: string, dispatc
                     user: user.uid, 
                     token: user.accessToken
                 }})
-            toast.success("Successfully singed up")
+            toast.success("Successfully created account")
             navigate("/signin");
         }
-    }catch (error) {
-        toast.error(`${error}`)
+    }catch (error: any) {
+        const errorMsg = error.message
+          .match(/\/(\S+)[)]./i)[1]
+          .replace(/-/g, " ")
+          .toUpperCase();
+        toast.error(`${errorMsg}`)
     }
 };
 
