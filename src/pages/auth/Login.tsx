@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { signInWithGoogle } from '../../services/authService';
 import { useState } from 'react';
 import { useAuth } from '../../context/auth.context';
 import { useNavigate, Link } from 'react-router-dom';
@@ -84,15 +83,6 @@ export const SignIn = () =>{
               onClick={() => loginHandler()}
             >
               Sign In
-            </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={() => signInWithGoogle()}
-            >
-              Sign In with Google
             </Button>
             <Grid container>
               <Grid item>
