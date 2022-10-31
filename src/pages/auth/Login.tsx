@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { useAuth } from '../../context/auth.context';
 import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../../api-calls/firebaseAuthApis';
+import { NavigationBar } from '../../components/index';
 
 
 export const SignIn = () =>{
@@ -33,65 +34,68 @@ export const SignIn = () =>{
   }
 
   return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={loginDetails.email}
-              onChange={(e) => setLoginDetails(details => ({...details, email: e.target.value}))}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={loginDetails.password}
-              onChange={(e) => setLoginDetails(details => ({...details, password: e.target.value}))}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={() => loginHandler()}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link to="/singup">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+      <>
+      <NavigationBar />
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 20,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={loginDetails.email}
+                onChange={(e) => setLoginDetails(details => ({...details, email: e.target.value}))}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={loginDetails.password}
+                onChange={(e) => setLoginDetails(details => ({...details, password: e.target.value}))}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={() => loginHandler()}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link to="/singup">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+      </>
   );
 }
