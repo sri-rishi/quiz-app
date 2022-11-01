@@ -1,6 +1,6 @@
 
-# Quiz Me
-###  A Quiz Web Application
+# Quizee
+###  Quizee is a web quiz application. Play quiz based on different categories. You can see your result and correct answers. Learn and check your knowledge with Quizee.
 
 <hr />
 
