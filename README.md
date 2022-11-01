@@ -8,17 +8,6 @@ Live Link - [Quizee](https://quizee-quiz.netlify.app/)
 
 <hr/>
 
-
-## **How to install and run locally ?**
-
-```
-$ git clone https://github.com/sri-rishi/quiz-app.git
-$ cd quiz-app
-$ npm install
-$ npm install firebase
-$ npm start
-```
-
 ## Features ?
 
 1. Home With Category
