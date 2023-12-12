@@ -18,7 +18,7 @@ export const categoriesData: Categories[] = [
     {
         id:3,
         categoryName: "Films",
-        coverImgSrc: "https://wallpaperboat.com/wp-content/uploads/2019/11/cinema-01.jpg"
+        coverImgSrc: "https://c4.wallpaperflare.com/wallpaper/22/762/507/film-movie-filmmaker-movie-director-wallpaper-preview.jpg"
     },
     {
         id: 4,
